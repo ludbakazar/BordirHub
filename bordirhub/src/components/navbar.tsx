@@ -19,6 +19,15 @@ export default function Navbar() {
 
           <li>
             <a
+              href="/transaction"
+              className="text-white hover:text-gray-300 transition duration-200"
+            >
+              Transaction
+            </a>
+          </li>
+
+          <li>
+            <a
               href="/services"
               className="text-white hover:text-gray-300 transition duration-200"
             >

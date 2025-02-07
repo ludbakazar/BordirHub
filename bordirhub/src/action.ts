@@ -26,3 +26,23 @@ export const handleLogin = async (formData: FormData) => {
 
   redirect("/");
 };
+
+export const handleRegister = async (formData: FormData) => {
+  const rawFormData = {
+    name: formData.get("name"),
+    email: formData.get("email"),
+    password: formData.get("password"),
+    role: "user",
+  };
+  const res = await fetch(`http://localhost:3000/api/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(rawFormData),
+  });
+  const response = await res.json();
+
+  if (!res.ok) return redirect(`/register?error=${response.message}`);
+  redirect("/login");
+};

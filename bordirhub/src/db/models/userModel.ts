@@ -5,7 +5,6 @@ import { hashPass } from "@/helpers/bcrypt";
 
 const userSchema = z.object({
   name: z.string().min(3, { message: "Name is required." }).max(50),
-  username: z.string().min(3, { message: "Username is required." }).max(50),
   email: z.string().email({ message: "Email must be a valid email address." }),
   password: z
     .string()
@@ -19,20 +18,14 @@ class UserModel {
   }
 
   static async create(newUser: userType) {
-    if (
-      !newUser.name ||
-      !newUser.username ||
-      !newUser.email ||
-      !newUser.password ||
-      !newUser.role
-    ) {
+    if (!newUser.name || !newUser.email || !newUser.password || !newUser.role) {
       throw new Error("All fields are required");
     }
 
     userSchema.parse(newUser);
 
     const existingUser = await this.collection().findOne({
-      $or: [{ username: newUser.username }, { email: newUser.email }],
+      email: newUser.email,
     });
 
     if (existingUser) {

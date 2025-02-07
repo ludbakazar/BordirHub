@@ -1,4 +1,4 @@
-import { registerUserType } from "@/type";
+import { userType } from "@/type";
 import { database } from "../config/config";
 import { z } from "zod";
 import { hashPass } from "@/helpers/bcrypt";
@@ -18,7 +18,7 @@ class UserModel {
     return database.collection("users");
   }
 
-  static async create(newUser: registerUserType) {
+  static async create(newUser: userType) {
     if (
       !newUser.name ||
       !newUser.username ||
@@ -44,6 +44,10 @@ class UserModel {
     newUser.updatedAt = new Date();
 
     return this.collection().insertOne(newUser);
+  }
+
+  static async findByEmail(email: string) {
+    return this.collection().findOne({ email: email });
   }
 }
 

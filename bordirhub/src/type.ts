@@ -1,4 +1,4 @@
-export type registerUserType = {
+export type userType = {
   name: string;
   username: string;
   email: string;
@@ -6,4 +6,9 @@ export type registerUserType = {
   role: string;
   createdAt?: Date;
   updatedAt?: Date;
+};
+
+export type loginType = {
+  email?: string;
+  password: string;
 };

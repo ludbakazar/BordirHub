@@ -9,19 +9,21 @@ export default function Navbar() {
       <div>
         <ul className="flex flex-row gap-6">
           <li>
-            <h1 className="text-white hover:text-gray-300 transition duration-200">
+            <a
+              href="/"
+              className="text-white hover:text-gray-300 transition duration-200"
+            >
               Home
-            </h1>
+            </a>
           </li>
+
           <li>
-            <h1 className="text-white hover:text-gray-300 transition duration-200">
-              About
-            </h1>
-          </li>
-          <li>
-            <h1 className="text-white hover:text-gray-300 transition duration-200">
+            <a
+              href="/services"
+              className="text-white hover:text-gray-300 transition duration-200"
+            >
               Services
-            </h1>
+            </a>
           </li>
           <li>
             <h1 className="text-white hover:text-gray-300 transition duration-200">

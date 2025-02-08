@@ -1,3 +1,5 @@
+import { handleLogout } from "@/action";
+
 export default function Navbar() {
   return (
     <div className="navbar bg-base-100 flex justify-between items-center p-4 shadow-md">
@@ -70,9 +72,12 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a className="text-white hover:bg-gray-200 transition duration-200">
+              <p
+                onClick={handleLogout}
+                className="text-white hover:bg-gray-200 transition duration-200"
+              >
                 Logout
-              </a>
+              </p>
             </li>
           </ul>
         </div>

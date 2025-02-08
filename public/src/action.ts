@@ -46,3 +46,9 @@ export const handleRegister = async (formData: FormData) => {
   if (!res.ok) return redirect(`/register?error=${response.message}`);
   redirect("/login");
 };
+
+export const handleLogout = async () => {
+  const cookiesStore = await cookies();
+  cookiesStore.delete("authorization");
+  redirect("/login");
+};

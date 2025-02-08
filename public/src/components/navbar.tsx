@@ -1,4 +1,8 @@
-export default async function Navbar() {
+"use client";
+
+import { handleLogout } from "@/action";
+
+export default function Navbar() {
   return (
     <div className="navbar bg-base-100 flex justify-between items-center p-4 shadow-md">
       <div>
@@ -68,9 +72,12 @@ export default async function Navbar() {
               </a>
             </li>
             <li>
-              <a className="text-white hover:bg-gray-200 transition duration-200">
+              <p
+                onClick={handleLogout}
+                className="text-white hover:bg-gray-200 transition duration-200"
+              >
                 Logout
-              </a>
+              </p>
             </li>
           </ul>
         </div>

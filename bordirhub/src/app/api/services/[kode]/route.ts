@@ -14,3 +14,19 @@ export async function DELETE(
     return errorHandler(error);
   }
 }
+
+export async function PUT(
+  request: Request,
+  { params }: { params: { kode: string } }
+) {
+  try {
+    const { kode } = await params;
+    const { nama } = await request.json();
+
+    await ServiceModel.update(kode, { nama });
+
+    return Response.json({ message: "Service updated" });
+  } catch (error: any) {
+    return errorHandler(error);
+  }
+}

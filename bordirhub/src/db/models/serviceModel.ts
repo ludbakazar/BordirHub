@@ -33,6 +33,15 @@ class ServiceModel {
   static async delete(kode: string) {
     return this.collection().deleteOne({ kode });
   }
+
+  static async update(kode: string, data: serviceType) {
+    const { nama } = data;
+
+    return this.collection().updateOne(
+      { kode },
+      { $set: { nama, updatedAt: new Date() } }
+    );
+  }
 }
 
 export default ServiceModel;

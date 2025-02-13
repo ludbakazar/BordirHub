@@ -18,7 +18,7 @@ export async function GET(request: Request) {
     const services = await ServiceModel.getAll();
 
     return Response.json(services);
-  } catch (error) {
+  } catch (error: any) {
     return errorHandler(error);
   }
 }

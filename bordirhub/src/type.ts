@@ -13,7 +13,7 @@ export type loginType = {
 };
 
 export type serviceType = {
-  name: string;
+  nama: string;
   createdAt?: Date;
   updatedAt?: Date;
 };

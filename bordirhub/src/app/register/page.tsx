@@ -4,7 +4,7 @@ import ErrorNotification from "@/components/errorNotif";
 
 export default function Register() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center  bg-gray-100">
       <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-96 h-100">
         <h2 className="text-white text-3xl font-bold mb-4 text-center">
           Register

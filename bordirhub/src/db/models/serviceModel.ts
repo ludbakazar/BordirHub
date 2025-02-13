@@ -25,6 +25,10 @@ class ServiceModel {
 
     return this.collection().insertOne(newService);
   }
+
+  static async getAll() {
+    return this.collection().find().toArray();
+  }
 }
 
 export default ServiceModel;

@@ -12,3 +12,13 @@ export async function POST(request: Request) {
     return errorHandler(error);
   }
 }
+
+export async function GET(request: Request) {
+  try {
+    const services = await ServiceModel.getAll();
+
+    return Response.json(services);
+  } catch (error) {
+    return errorHandler(error);
+  }
+}

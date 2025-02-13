@@ -21,7 +21,6 @@ export default function ListService() {
   useEffect(() => {
     fetchServices();
   }, []);
-  console.log(services);
 
   return (
     <div className="h-screen flex flex-col items-center justify-start bg-gray-100">

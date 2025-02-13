@@ -13,6 +13,7 @@ export type loginType = {
 };
 
 export type serviceType = {
+  kode?: string;
   nama: string;
   createdAt?: Date;
   updatedAt?: Date;

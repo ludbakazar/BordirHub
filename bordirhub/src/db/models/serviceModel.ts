@@ -11,7 +11,7 @@ class ServiceModel {
     return database.collection("services");
   }
 
-  static async create(data: serviceType) {
+  static async create(data: any) {
     const { name } = data;
 
     serviceSchema.parse(data);
@@ -28,6 +28,10 @@ class ServiceModel {
 
   static async getAll() {
     return this.collection().find().toArray();
+  }
+
+  static async delete(kode: string) {
+    return this.collection().deleteOne({ kode });
   }
 }
 

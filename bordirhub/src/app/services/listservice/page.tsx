@@ -42,6 +42,7 @@ export default function ListService() {
                   key={index}
                   services={service}
                   index={index}
+                  fetchServices={fetchServices}
                 />
               ))}
             </tbody>

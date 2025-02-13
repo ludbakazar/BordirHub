@@ -11,3 +11,9 @@ export type loginType = {
   email?: string;
   password: string;
 };
+
+export type serviceType = {
+  name: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+};

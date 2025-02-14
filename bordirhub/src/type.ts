@@ -21,7 +21,7 @@ export type serviceType = {
 
 export type expenseType = {
   kode?: string;
-  date: string;
+
   nama: string;
   harga: number;
   createdAt?: Date;

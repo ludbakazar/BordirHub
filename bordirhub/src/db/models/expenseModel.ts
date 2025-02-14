@@ -28,6 +28,7 @@ class ExpenseModel {
           $lt: endDate, // Tanggal akhir (awal bulan berikutnya)
         },
       })
+      .sort({ createdAt: -1 })
       .toArray();
   }
 }

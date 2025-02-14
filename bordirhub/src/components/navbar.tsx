@@ -37,9 +37,12 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <h1 className="text-white hover:text-gray-300 transition duration-200">
-              Contact
-            </h1>
+            <a
+              href="/oprationals"
+              className="text-white hover:text-gray-300 transition duration-200"
+            >
+              Oprational
+            </a>
           </li>
         </ul>
       </div>

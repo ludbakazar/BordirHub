@@ -44,7 +44,7 @@ export default function ListService() {
             {/* head */}
             <thead className="bg-gray-800 text-white">
               <tr>
-                <th className="p-4 border-b">#</th>
+                <th className="p-4 border-b">No</th>
                 <th className="p-4 border-b">Name</th>
                 <th className="p-4 border-b">Job</th>
               </tr>

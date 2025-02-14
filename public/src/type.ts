@@ -11,3 +11,8 @@ export type loginType = {
   email?: string;
   password: string;
 };
+
+export type transactionType = {
+  kode: string;
+  qty: number;
+};

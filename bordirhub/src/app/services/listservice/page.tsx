@@ -46,7 +46,7 @@ export default function ListService() {
               <tr>
                 <th className="p-4 border-b">No</th>
                 <th className="p-4 border-b">Name</th>
-                <th className="p-4 border-b">Job</th>
+                <th className="p-4 border-b">Action</th>
               </tr>
             </thead>
             <tbody>

@@ -1,6 +1,7 @@
 "use client";
 
 import TableListService from "@/components/listService";
+import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function ListService() {
@@ -24,6 +25,19 @@ export default function ListService() {
 
   return (
     <div className="h-screen flex flex-col items-center justify-start bg-gray-100">
+      <div className="flex items-center w-full max-w-4xl mt-10">
+        <div className="flex-none">
+          <button
+            onClick={() => redirect("/services")}
+            className="bg-gray-800 text-white px-4 py-2 rounded"
+          >
+            Kembali
+          </button>
+        </div>
+        <div className="flex-1 text-center">
+          <h1 className="text-3xl font-bold">List Service</h1>
+        </div>
+      </div>
       <div className="overflow-x-auto w-full max-w-4xl mt-10">
         <div className="bg-white shadow-lg rounded-lg">
           <table className="table-auto w-full text-left border-collapse">

@@ -3,10 +3,12 @@ import { handleLogout } from "@/action";
 export default function Navbar() {
   return (
     <div className="navbar bg-base-100 flex justify-between items-center p-4 shadow-md">
-      <div>
-        <a className="btn btn-ghost text-xl text-white hover:text-gray-300 transition duration-200">
-          daisyUI
-        </a>
+      <div className="h-20 w-20">
+        <img
+          src="/Bordirhub_Logo_Design_Feb_14_2025-removebg-preview.png"
+          alt="Bordirhub Logo"
+          className="h-full w-full object-cover"
+        />
       </div>
       <div>
         <ul className="flex flex-row gap-6">

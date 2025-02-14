@@ -119,45 +119,13 @@ export default function Oprational() {
       ) : (
         <>
           <div className="flex items-center w-full max-w-4xl mt-10">
-            <div className="flex-none">
-              <button
-                onClick={() => redirect("/services")}
-                className="bg-gray-800 text-white px-4 py-2 rounded"
-              >
-                Kembali
-              </button>
-            </div>
             <div className="flex-1 text-center">
-              <h1 className="text-3xl font-bold">Oprational</h1>
+              <h1 className="text-3xl font-bold">OPRATIONAL</h1>
             </div>
             <div className="flex-none">
-              <button
-                onClick={() =>
-                  (
-                    document.getElementById("my_modal_3") as HTMLDialogElement
-                  )?.showModal()
-                }
-                className="bg-blue-800 text-white px-4 py-2 rounded"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-8"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                </svg>
-              </button>
-
               <dialog id="my_modal_3" className="modal">
                 <div className="modal-box flex items-center justify-center">
-                  <div className=" p-8  w-96">
+                  <div className="p-8 w-96">
                     <h1 className="text-white text-2xl font-bold mb-6 text-center">
                       Tambah Oprational
                     </h1>
@@ -228,18 +196,40 @@ export default function Oprational() {
             </div>
           </div>
 
-          {/* Filter Tanggal */}
-          <div className="flex justify-center mt-4">
-            <input
-              type="date"
-              value={filterDate}
-              onChange={(e) => setFilterDate(e.target.value)}
-              className="border border-gray-300 bg-white text-black rounded p-2"
-            />
-          </div>
-
           <div className="overflow-x-auto w-full max-w-4xl mt-10">
-            <div className="bg-white shadow-lg rounded-lg">
+            <div>
+              <div className="flex justify-between items-center p-4">
+                <button
+                  onClick={() =>
+                    (
+                      document.getElementById("my_modal_3") as HTMLDialogElement
+                    )?.showModal()
+                  }
+                  className="bg-blue-800 text-white px-4 py-2 rounded"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-8"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                    />
+                  </svg>
+                </button>
+
+                <input
+                  type="date"
+                  value={filterDate}
+                  onChange={(e) => setFilterDate(e.target.value)}
+                  className="border border-gray-300 bg-white text-black rounded p-2"
+                />
+              </div>
               <table className="table-auto w-full text-left border-collapse">
                 <thead className="bg-gray-800 text-white">
                   <tr>

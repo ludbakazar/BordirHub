@@ -1,15 +1,15 @@
+"use client";
 import { listTransactionType } from "@/type";
 
 export default function ListTransaction({
   transaction,
   i,
-  handleRedirect,
 }: {
   transaction: listTransactionType;
   i: number;
-  handleRedirect: (id: string) => void;
 }) {
   const createdAtDate = new Date(transaction.createdAt);
+
   return (
     <tr className="hover:bg-gray-100">
       <td className="py-2 px-4 border-b">{i + 1}</td>
@@ -23,8 +23,8 @@ export default function ListTransaction({
       <td className="py-2 px-4 border-b">{transaction.status}</td>
       <td className="py-2 px-4 border-b">{transaction.totalAmount}</td>
       <td className="py-2 px-4 border-b">
-        <button
-          onClick={() => handleRedirect(transaction._id)}
+        <a
+          href={`/transactions/list/${transaction._id}`}
           className="text-white-500 hover:text-base-100"
         >
           <svg
@@ -46,7 +46,7 @@ export default function ListTransaction({
               d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
             />
           </svg>
-        </button>
+        </a>
       </td>
     </tr>
   );

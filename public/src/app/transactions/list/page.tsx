@@ -7,11 +7,6 @@ import { useEffect, useState } from "react";
 export default function List() {
   const [transactions, setTransactions] = useState([]);
 
-  const handleRedirect = (id: string) => {
-    console.log(id);
-    redirect(`/transactions/detail/${id}`);
-  };
-
   const fetchTransactions = async () => {
     const response = await fetch("/api/transactions", {
       method: "GET",
@@ -45,12 +40,7 @@ export default function List() {
               </thead>
               <tbody>
                 {transactions.map((transaction, i) => (
-                  <ListTransaction
-                    key={i}
-                    transaction={transaction}
-                    i={i}
-                    handleRedirect={handleRedirect}
-                  />
+                  <ListTransaction key={i} transaction={transaction} i={i} />
                 ))}
               </tbody>
             </table>

@@ -16,3 +16,11 @@ export type transactionType = {
   kode: string;
   qty: number;
 };
+
+export type serviceType = {
+  _id: string;
+  kode: string;
+  nama: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+};

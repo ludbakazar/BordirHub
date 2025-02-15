@@ -14,11 +14,11 @@ class TransactionModel {
 
   static async create({
     services,
-    description,
+
     id,
   }: {
     services: transactionType[];
-    description: string;
+
     id: string;
   }) {
     await client.connect();
@@ -28,7 +28,6 @@ class TransactionModel {
       const newTransaction = {
         costumerId: new ObjectId(id),
         status: "pending",
-        description: description,
         totalAmount: 0,
         createdAt: new Date(),
         updatedAt: new Date(),

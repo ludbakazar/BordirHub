@@ -24,3 +24,12 @@ export type serviceType = {
   createdAt?: Date;
   updatedAt?: Date;
 };
+
+export type listTransactionType = {
+  _id: string;
+  costumerId: string;
+  status: string;
+  totalAmount: number;
+  createdAt: Date;
+  updatedAt: Date;
+};

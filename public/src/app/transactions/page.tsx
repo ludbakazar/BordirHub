@@ -18,7 +18,7 @@ export default function Transactions() {
           </div>
 
           <div
-            onClick={() => redirect("/transactions/create")}
+            onClick={() => redirect("/transactions/list")}
             className="card bg-base-100 text-primary-content w-96 h-60 shadow-xl transition-transform transform hover:scale-105"
           >
             {" "}

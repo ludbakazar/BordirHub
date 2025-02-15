@@ -78,12 +78,12 @@ class TransactionModel {
           as: "detailTransactions",
         },
       },
-      // {
-      //   $unwind: {
-      //     path: "$detailTransactions",
-      //     preserveNullAndEmptyArrays: true,
-      //   },
-      // },
+      {
+        $unwind: {
+          path: "$detailTransactions",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
       {
         $lookup: {
           from: "services",
@@ -92,17 +92,16 @@ class TransactionModel {
           as: "service",
         },
       },
-      // {
-      //   $unwind: {
-      //     path: "$service",
-      //     preserveNullAndEmptyArrays: true,
-      //   },
-      // },
+      {
+        $unwind: {
+          path: "$service",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
       {
         $project: {
           Id: 1,
           costumerId: 1,
-          description: 1,
           status: 1,
           createdAt: 1,
           updatedAt: 1,
@@ -110,6 +109,18 @@ class TransactionModel {
           "detailTransactions.qty": 1,
           "detailTransactions.price": 1,
           "service.nama": 1,
+        },
+      },
+    ];
+
+    return await this.transaction().aggregate(agg).toArray();
+  }
+
+  static async findById(id: string) {
+    const agg = [
+      {
+        $match: {
+          costumerId: new ObjectId(id),
         },
       },
     ];

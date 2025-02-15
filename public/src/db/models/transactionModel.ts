@@ -14,9 +14,11 @@ class TransactionModel {
 
   static async create({
     services,
+    description,
     id,
   }: {
     services: transactionType[];
+    description: string;
     id: string;
   }) {
     await client.connect();
@@ -26,6 +28,8 @@ class TransactionModel {
       const newTransaction = {
         costumerId: new ObjectId(id),
         status: "pending",
+        description: description,
+        totalAmount: 0,
         createdAt: new Date(),
         updatedAt: new Date(),
       };
@@ -58,6 +62,60 @@ class TransactionModel {
     } finally {
       session.endSession();
     }
+  }
+
+  static async findByCostumerId(id: string) {
+    const agg = [
+      {
+        $match: {
+          costumerId: new ObjectId(id),
+        },
+      },
+      {
+        $lookup: {
+          from: "detailTransactions",
+          localField: "_id",
+          foreignField: "transactionId",
+          as: "detailTransactions",
+        },
+      },
+      // {
+      //   $unwind: {
+      //     path: "$detailTransactions",
+      //     preserveNullAndEmptyArrays: true,
+      //   },
+      // },
+      {
+        $lookup: {
+          from: "services",
+          localField: "detailTransactions.serviceId",
+          foreignField: "_id",
+          as: "service",
+        },
+      },
+      // {
+      //   $unwind: {
+      //     path: "$service",
+      //     preserveNullAndEmptyArrays: true,
+      //   },
+      // },
+      {
+        $project: {
+          Id: 1,
+          costumerId: 1,
+          description: 1,
+          status: 1,
+          createdAt: 1,
+          updatedAt: 1,
+          totalAmount: 1,
+          "detailTransactions.qty": 1,
+          "detailTransactions.price": 1,
+          "service.nama": 1,
+        },
+      },
+    ];
+
+    return await this.transaction().aggregate(agg).toArray();
   }
 }
 export default TransactionModel;

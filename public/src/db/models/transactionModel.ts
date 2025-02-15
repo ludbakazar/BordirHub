@@ -43,6 +43,7 @@ class TransactionModel {
           transactionId: transaction.insertedId,
           serviceId: serviceData._id,
           qty: service.qty,
+          price: 0,
           createdAt: new Date(),
           updatedAt: new Date(),
         };

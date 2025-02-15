@@ -9,6 +9,10 @@ class ServiceModel {
   static async findById(kode: string) {
     return this.collection().findOne({ kode: kode });
   }
+
+  static async getAll() {
+    return this.collection().find().toArray();
+  }
 }
 
 export default ServiceModel;

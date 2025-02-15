@@ -1,7 +1,9 @@
 "use client";
 
 import { serviceType } from "@/type";
+import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 export default function Create() {
   const [rows, setRows] = useState([{ id: 1, kode: "", qty: "" }]);
@@ -26,15 +28,29 @@ export default function Create() {
         services: rows.map(({ id, ...rest }) => rest),
       };
 
-      await fetch("/api/transactions", {
+      const response = await fetch("/api/transactions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(form),
       });
+
+      const data = await response.json();
+
+      Swal.fire({
+        title: "Success",
+        text: data.message,
+        icon: "success",
+      }).then(() => {
+        redirect("/transactions");
+      });
     } catch (error: any) {
-      console.log(error.message);
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        icon: "error",
+      });
     }
   };
 

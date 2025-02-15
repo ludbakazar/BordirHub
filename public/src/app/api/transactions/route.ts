@@ -13,10 +13,11 @@ export async function POST(request: Request) {
       );
     }
 
-    // await TransactionModel.create({ services, id });
+    await TransactionModel.create({ services, id });
 
     return Response.json({ message: "Transaction created" }, { status: 201 });
   } catch (error: any) {
+    console.log(error);
     return new Response(error.message, { status: 500 });
   }
 }

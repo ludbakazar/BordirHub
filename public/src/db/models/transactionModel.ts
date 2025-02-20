@@ -127,5 +127,52 @@ class TransactionModel {
 
     return await this.transaction().aggregate(agg).toArray();
   }
+
+  static async detailById(id: string) {
+    const agg = [
+      { $match: { _id: new ObjectId(id) } },
+      {
+        $lookup: {
+          from: "detailTransactions",
+          localField: "_id",
+          foreignField: "transactionId",
+          as: "detail",
+        },
+      },
+      {
+        $unwind: {
+          path: "$detail",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $lookup: {
+          from: "services",
+          localField: "detail.serviceId",
+          foreignField: "_id",
+          as: "service",
+        },
+      },
+      {
+        $unwind: {
+          path: "$service",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          status: 1,
+          createdAt: 1,
+          updatedAt: 1,
+          "detail.qty": 1,
+          "detail.price": 1,
+          "service.nama": 1,
+          totalAmount: 1,
+        },
+      },
+    ];
+    return await this.transaction().aggregate(agg).toArray();
+  }
 }
 export default TransactionModel;

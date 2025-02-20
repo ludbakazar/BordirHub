@@ -1,7 +1,6 @@
 "use client";
 
 import ListTransaction from "@/components/listTransaction";
-import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function List() {

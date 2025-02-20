@@ -12,20 +12,36 @@ export default function ListTransaction({
 
   return (
     <tr className="hover:bg-gray-100">
-      <td className="py-2 px-4 border-b">{i + 1}</td>
-      <td className="py-2 px-4 border-b">
+      <td className="py-2 px-4 border-b text-center">{i + 1}</td>
+      <td className="py-2 px-4 border-b text-center">
         {createdAtDate.toLocaleDateString("en-GB", {
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
         })}
       </td>
-      <td className="py-2 px-4 border-b">{transaction.status}</td>
-      <td className="py-2 px-4 border-b">{transaction.totalAmount}</td>
-      <td className="py-2 px-4 border-b">
+      <td className="py-2 px-4 border-b text-center">
+        <span
+          className={`inline-flex items-center justify-center px-2 py-1 text-xs font-semibold rounded-full ${
+            transaction.status === "Completed"
+              ? "bg-green-100 text-green-800"
+              : transaction.status === "Pending"
+              ? "bg-yellow-100 text-yellow-800"
+              : transaction.status === "Cancelled"
+              ? "bg-red-100 text-red-800"
+              : "bg-gray-100 text-gray-800"
+          }`}
+        >
+          {transaction.status}
+        </span>
+      </td>
+      <td className="py-2 px-4 border-b text-center">
+        {transaction.totalAmount}
+      </td>
+      <td className="py-2 px-4 border-b text-center">
         <a
           href={`/transactions/list/${transaction._id}`}
-          className="text-white-500 hover:text-base-100"
+          className="text-blue-500 hover:text-blue-700 transition-colors duration-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +49,7 @@ export default function ListTransaction({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-6"
+            className="w-6 h-6 mx-auto" // Center the icon
           >
             <path
               strokeLinecap="round"

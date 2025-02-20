@@ -33,3 +33,24 @@ export type listTransactionType = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+export type transactionProps = {
+  params: {
+    id: string;
+  };
+};
+
+export type transactionDetailProps = {
+  _id: string;
+  status: string;
+  totalAmount: number;
+  createdAt: string;
+  updatedAt: string;
+  detail: {
+    qty: string;
+    price: number;
+  };
+  service: {
+    nama: string;
+  };
+};

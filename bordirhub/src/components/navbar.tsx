@@ -23,7 +23,7 @@ export default function Navbar() {
 
           <li>
             <a
-              href="/transaction"
+              href="/transactions"
               className="text-white hover:text-gray-300 transition duration-200"
             >
               Transaction
